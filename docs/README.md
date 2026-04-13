@@ -26,7 +26,8 @@ Running the container and configure the listening ports:
 docker run --rm -p 5900:5900 -p 5901:5901 uvnc-repeater
 ```
 
-> [!WARNING] Confirm the correct port configuration in the uvncrepeater.ini file
+> [!WARNING]
+> Confirm the correct port configuration in the uvncrepeater.ini file
 > the default configuration is 5900 for viewer and 5901 for server, if you want to change the ports, 
 > update the ini file and rebuild the image.
 
@@ -44,7 +45,8 @@ and overrides the start command with bash:
 By this way, we enter to the container and is possible to perform tests and validate
 direcotries and files in the file system.
 
-> [!NOTE] This is isefuel when container was started with -d flag to run in background, if you want to run in foreground, just execute bash command in the container terminal and not override the start command with bash.
+> [!NOTE]
+> This is isefuel when container was started with -d flag to run in background, if you want to run in  > foreground, just execute bash command in the container terminal and not override the start command with > bash.
 ```bash
 docker run --rm -it debug-repeater /bin/bash
 ```
@@ -66,13 +68,17 @@ sequenceDiagram
 
 ### Steps of installation
 
-> [!NOTE] Is assumed Docker / Docker Desktop is installed in the system
+> [!NOTE]
+> Is assumed Docker / Docker Desktop is installed in the system
+
 1. Clone the repository in your local machine
 2. Execute docker run
 ```bash
 docker run --rm -p 5900:5900 -p 5901:5901 uvnc-repeater
 ```
-> [!TIP] The previous command ommits -d flag to run the container in foreground, this is useful for testing and validate the logs of the repeater, if you want to run in background add -d flag.
+> [!TIP]
+> The previous command ommits -d flag to run the container in foreground, this is useful for testing
+> and validate the logs of the repeater, if you want to run in background add -d flag.
 
 ### UltraVNC Service Clean Re-registration
 
@@ -100,7 +106,9 @@ taskkill /PID <PID> /F /T
 1. Install in the target host the UltraVNC server, configure the repeater connection with the correct IP and port, also configure the keepalive timing to mantain the connection with the repeater
 
 Config the ip of the repeater and the port for the reverse connection in the ``ultravnc.ini`` file, example:
-> [!Note] In the repo is possible to use the ``ultravnc_example.ini``
+> [!NOTE]
+> In the repo is possible to use the ``ultravnc_example.ini``
+
 ```ini
 service_commandline=-id:1001 -autoreconnect ID:1001 -connect <IP_Repeater>:5901
 ```
